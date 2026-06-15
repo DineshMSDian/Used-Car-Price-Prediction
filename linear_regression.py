@@ -23,7 +23,7 @@ x = df[['mileage']]
 y = df[['price']]
 
 #2. Train/Test split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 print(x_train.shape, x_test.shape)  
 
 # 3. Fit LinearRegression
@@ -32,5 +32,5 @@ model.fit(x_train, y_train)
 
 # 4. Calculate MAE
 y_pred = model.predict(x_test)
-mae = mean_absolute_error(x_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
 print(mae.__round__())
