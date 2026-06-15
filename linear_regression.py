@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error
 
 # Load Datasets
 wv_df = pd.read_csv(r'D:\Hustle\Used-Car-Price-Prediction\Datasets\vw.csv')
@@ -28,3 +29,8 @@ print(x_train.shape, x_test.shape)
 # 3. Fit LinearRegression
 model = LinearRegression()
 model.fit(x_train, y_train)
+
+# 4. Calculate MAE
+y_pred = model.predict(x_test)
+mae = mean_absolute_error(x_test, y_pred)
+print(mae.__round__())
