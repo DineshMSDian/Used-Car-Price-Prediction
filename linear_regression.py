@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 
 # Load Datasets
 wv_df = pd.read_csv(r'D:\Hustle\Used-Car-Price-Prediction\Datasets\vw.csv')
@@ -17,9 +18,13 @@ df = pd.concat([wv_df, audi_df], ignore_index=True)
 # Model Training
 
 # 1. Define X (mileage) and y (price)
-x = df[['price']]
-y = df[['mileage']]
+x = df[['mileage']]
+y = df[['price']]
 
 #2. Train/Test split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_state=42)
 print(x_train.shape, x_test.shape)  
+
+# 3. Fit LinearRegression
+model = LinearRegression()
+model.fit(x_train, y_train)
